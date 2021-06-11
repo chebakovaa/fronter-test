@@ -2,16 +2,18 @@
     <div class="task1-panel">
         <div class="task1-panel-time">
         </div>
-        <div class="task1-panel-board">
-        </div>
+        <MemoryBoard class="task1-panel-board"/>
     </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import MemoryBoard from "@/components/MemoryBoard.vue"
+
 
 @Options({
   components: {
+      MemoryBoard,
   },
 })
 export default class MemoryHub extends Vue {}
