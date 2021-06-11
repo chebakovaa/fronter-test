@@ -5,7 +5,6 @@
         <div class="task1-panel-board">
         </div>
     </div>
-    </div>
 </template>
 
 <script lang="ts">
@@ -21,21 +20,30 @@ export default class MemoryHub extends Vue {}
 
 <style scoped>
 
+body {margin: 0;}
+
 .task1-panel {
     display: inline-flex;
     flex-flow: row nowrap;
     justify-content: flex-start;
     align-items: stretch;
-    height: 500px;
-    background-color: aqua;
+    background-color: blanchedalmond;
+    position: absolute;
+    bottom: 10px;
+    top: 70px;
+    right: 10px;
+    left: 10px;
 }
 
 .task1-panel-time {
     order: 1;
+    width: 300px;
 }
 
 .task1-panel-board {
     order: 2;
+    background-color: cadetblue;
+    width: 100%;
 }
 
 </style>

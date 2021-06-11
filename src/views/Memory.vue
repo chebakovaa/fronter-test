@@ -1,11 +1,12 @@
 <template>
     <div class="task1">
+      <MemoryHub/>
     </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import MemeryHub from "@/components/MemoryHub.vue";
+import MemoryHub from "@/components/MemoryHub.vue";
 
 @Options({
   components: {
