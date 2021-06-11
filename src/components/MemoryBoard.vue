@@ -1,11 +1,5 @@
 <template>
-   <div>
-       <style>
-           :root {
-               --count-col: {{ countCol }};
-               --count-row: {{ countCol }};
-           }
-       </style>
+   <div :style="cssVars">
    </div> 
 </template>
 
@@ -25,10 +19,20 @@ import { Options, Prop, Vue } from "vue-property-decorator";
 @Options({
   components: {
   },
+  computed: {
+    cssVars() {
+      return {
+        '--count-col': this.countCol,
+        '--count-row': this.countCol,
+      }
+    }
+  }
 })
 export default class MemoryBoard extends Vue {
-    @Prop({default: 8})
-    readonly countCol: number
 
+    @Prop({default: 8})
+    readonly countCol!: number
+
+    
 }
 </script>
