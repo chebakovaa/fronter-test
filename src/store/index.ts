@@ -37,7 +37,7 @@ export default createStore({
     deleteCell(state, payload) {
       state.gameContent[payload.cellId].delete();
     },
-    activeCell(state, payload) {
+    activateCell(state, payload) {
       if (state.activeCellId != payload.cellId) {
         if (state.activeCellId >= 0) { state.gameContent[state.activeCellId].hide(); }
         if (payload.cellId >= 0) {
@@ -67,11 +67,11 @@ export default createStore({
         state.activeCellId = -1;
       }, 500);
     },
-    activeCell({commit, state}, payload) {
+    activateCell({commit, state}, payload) {
       clearTimeout(state.timerId5);
-      commit('activeCell', { cellId: payload.cellId });
+      commit('activateCell', { cellId: payload.cellId });
       state.timerId5 = setTimeout(() => {
-        commit('activeCell', { cellId: -1 });
+        commit('activateCell', { cellId: -1 });
       }, 5000);
     }
   },

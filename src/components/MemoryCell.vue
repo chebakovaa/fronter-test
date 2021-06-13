@@ -20,7 +20,7 @@ export default class MemoryCell extends Vue {
       if(store.getters.ACTIVE_CELL_ID >= 0){
         store.dispatch('showCell', { cellId: this.value.id });
       } else {
-        store.dispatch('activeCell', { cellId: this.value.id });
+        store.dispatch('activateCell', { cellId: this.value.id });
       }
     }
 
