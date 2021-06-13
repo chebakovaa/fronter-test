@@ -16,9 +16,10 @@
 </style>
 
 <script lang="ts">
-import { Options, Prop, Vue } from "vue-property-decorator";
+import { Options, Vue } from "vue-property-decorator";
 import store from "../store";
 import MemoryCell from "@/components/MemoryCell.vue"
+import ICell from "@/model/ICell";
 
 @Options({
   components: {
@@ -35,9 +36,8 @@ import MemoryCell from "@/components/MemoryCell.vue"
 })
 export default class MemoryBoard extends Vue {
     
-    public get items(): any {
-      const ac = store.getters.ALL_CONTENT;
-      return store.getters.GAME_CONTENT.map((v: number, index: number) => ({id: index, key: v, content: ac.get(v)}));
+    public get items(): ICell[] {
+      return store.getters.GAME_CONTENT;
     }
 
     public get columnCount(): number {
