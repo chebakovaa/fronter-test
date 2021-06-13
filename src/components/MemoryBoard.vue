@@ -1,6 +1,6 @@
 <template>
    <div :style="cssVars" >
-     <MemoryCell v-for="cell in cells" :key="cell" :title="cell"/>
+     <MemoryCell v-for="cell in items" :key="cell.id" :value="cell"/>
    </div> 
 </template>
 
@@ -17,6 +17,7 @@
 
 <script lang="ts">
 import { Options, Prop, Vue } from "vue-property-decorator";
+import store from "../store";
 import MemoryCell from "@/components/MemoryCell.vue"
 
 @Options({
@@ -26,21 +27,22 @@ import MemoryCell from "@/components/MemoryCell.vue"
   computed: {
     cssVars() {
       return {
-        '--count-col': this.countCol,
-        '--count-row': this.countCol,
+        '--count-col': this.columnCount,
+        '--count-row': this.columnCount,
       }
-    },
-    cells() {
-      return this.items;
     },
   }
 })
 export default class MemoryBoard extends Vue {
     
-    items: number[] = [...Array(64).keys()];
+    public get items(): any {
+      const ac = store.getters.ALL_CONTENT;
+      return store.getters.GAME_CONTENT.map((v: number, index: number) => ({id: index, key: v, content: ac.get(v)}));
+    }
 
-    @Prop({default: 8})
-    readonly countCol!: number
+    public get columnCount(): number {
+      return store.state.columnCount;
+    }
 
 }
 </script>
