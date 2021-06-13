@@ -1,7 +1,6 @@
 <template>
     <div class="task1-panel">
-        <div class="task1-panel-time">
-        </div>
+        <MemoryDashboard class="task1-panel-time"/>
         <MemoryBoard class="task1-panel-board"/>
     </div>
 </template>
@@ -9,10 +8,12 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import MemoryBoard from "@/components/MemoryBoard.vue"
+import MemoryDashboard from "@/components/MemoryDashboard.vue"
 
 
 @Options({
   components: {
+    MemoryDashboard,
       MemoryBoard,
   },
 })
