@@ -4,13 +4,20 @@
       Start
     </button>
     <h2 class="task1-hub-cp_time">{{gameTime}}</h2>
+    <MemoryResults/>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue } from 'vue-property-decorator'
-import store from "../store";
+import { Vue, Options } from "vue-property-decorator"
+import store from "../store"
+import MemoryResults from "@/components/MemoryResults.vue"
 
+@Options({
+  components: {
+    MemoryResults,
+  },
+})
 export default class MemoryDashboard extends Vue {
   
   timerId = 0;
