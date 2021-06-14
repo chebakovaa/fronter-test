@@ -11,5 +11,5 @@ export function makeIdContentArray(count: number, maxCount: number): number[] {
 }
 
 export function makeContent(maxCount: number): Map<number, string> {
-  return new Map<number, string>([...Array(maxCount * maxCount).keys()].map(v => [v, v.toString()]));
+  return new Map<number, string>([...Array(maxCount * maxCount).keys()].map(v => [v, v.toString()])); //`../assets/cells/${v.toString()}.svg`
 }

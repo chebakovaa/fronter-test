@@ -3,7 +3,7 @@ import ICell from "./ICell";
 export default class Cell implements ICell {
 
   private readonly _id: number = -1;
-  private readonly _content: any = null;
+  private readonly _content: string = "";
   private _isVisible = false;
   private _isDeleted = false;
   private _idContent: number;
@@ -14,7 +14,7 @@ export default class Cell implements ICell {
     this._content = content;
   }
 
-  public get content(): any { return this._content; }
+  public get content(): string { return this._content; }
   
   public get id(): number { return this._id; }
 
