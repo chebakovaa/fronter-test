@@ -4,6 +4,7 @@ import Cell from "@/model/Cell";
 import { createStore } from "vuex";
 
 const cellsContent: Map<number, string> = makeContent(8);
+const STORAGE_KEY = 'memory-game';
 
 export default createStore({
   state: {
@@ -14,6 +15,7 @@ export default createStore({
     tryCellId: -1,
     gameContent: { cells: new Array<ICell>(0) }, //makeIdContentArray(4, 8).map((v, index) => new Cell(index, v, cellsContent.get(v))),
     timerId5: -1,
+    timerGameId: -1,
   },
   getters: {
     MAX_CELL_COUNT: state => state.maxColumnCount * state.maxColumnCount,
@@ -24,6 +26,9 @@ export default createStore({
   mutations: {
     gameStart(state) {
       state.gameContent.cells = makeIdContentArray(state.columnCount, state.maxColumnCount).map((v, index) => (new Cell(index, v, cellsContent.get(v))) as ICell);
+    },
+    gameFinish(state) {
+      state.gameContent.cells = new Array<ICell>(0);
     },
     timeStep(state) {
       state.gameTime++;
@@ -56,16 +61,29 @@ export default createStore({
     // },
   },
   actions: {
+    startGame({commit, state}) {
+      if (state.timerGameId > 0){
+        clearInterval(state.timerGameId);
+        commit("timerStop")
+      }
+      commit("gameStart");
+      state.timerGameId = setInterval(() => commit("timeStep"), 1000);
+    },
     showCell({commit, state}, payload) {
       commit('showCell', { cellId: payload.cellId });
       setTimeout(() => {
         clearTimeout(state.timerId5);
         commit('hideCell', { cellId: payload.cellId });
         commit('hideCell', { cellId: state.activeCellId });
-        console.log();
         if (state.gameContent.cells[state.activeCellId].idContent == state.gameContent.cells[payload.cellId].idContent) {
           commit('deleteCell', { cellId: state.activeCellId });
           commit('deleteCell', { cellId: payload.cellId });
+          if (state.gameContent.cells.every(v => v.isDeleted)) {
+            clearInterval(state.timerGameId);
+            commit('gameFinish');
+            commit('timerStop');
+            //window.localStorage.setItem(STORAGE_KEY, JSON.stringify())
+          }
         }
         state.activeCellId = -1;
       }, 500);
@@ -75,7 +93,7 @@ export default createStore({
       commit('activateCell', { cellId: payload.cellId });
       state.timerId5 = setTimeout(() => {
         commit('activateCell', { cellId: -1 });
-      }, 50000);
+      }, 5000);
     }
   },
   modules: {},
