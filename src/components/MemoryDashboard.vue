@@ -20,12 +20,13 @@ export default class MemoryDashboard extends Vue {
   }
 
   start(){
-    if (this.timerId > 0){
-      clearInterval(this.timerId);
-      store.commit("timerStop")
-    }
-    store.commit("gameStart");
-    this.timerId = setInterval(() => store.commit("timeStep"), 1000);
+    store.dispatch('startGame');
+    // if (this.timerId > 0){
+    //   clearInterval(this.timerId);
+    //   store.commit("timerStop")
+    // }
+    // store.commit("gameStart");
+    // this.timerId = setInterval(() => store.commit("timeStep"), 1000);
   }
 }
 </script>
