@@ -8,12 +8,11 @@ const STORAGE_KEY = 'memory-game';
 
 export default createStore({
   state: {
-    columnCount: 2,
-    maxColumnCount: 8,
+    columnCount: 2, // Количество строк и столбцов на поле во время игры (columnCount*columnCount должно быть четным)
+    maxColumnCount: 8, // Максимально допустимое количество строк и столбцов на поле во время игры
     gameTime: 0,
-    activeCellId: -1,
-    tryCellId: -1,
-    gameContent: { cells: new Array<ICell>(0) }, //makeIdContentArray(4, 8).map((v, index) => new Cell(index, v, cellsContent.get(v))),
+    activeCellId: -1, // Id ячейки, к которой подбирается пара
+    gameContent: { cells: new Array<ICell>(0), results: JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]')}, // игровые ячейки
     timerId5: -1,
     timerGameId: -1,
   },
@@ -22,8 +21,14 @@ export default createStore({
     GAME_CONTENT: state => state.gameContent.cells,
     GAME_TIME: state => state.gameTime,
     ACTIVE_CELL_ID: state => state.activeCellId,
+    RESULTS: state => state.gameContent.results,
   },
   mutations: {
+    saveResult(state, time) {
+      const best = state.gameContent.results;
+      best.push({ result: time, date: new Date() });
+      state.gameContent.results = best.sort((a: any, b: any) => a.result - b.result).slice(0, 5);
+    },
     gameStart(state) {
       state.gameContent.cells = makeIdContentArray(state.columnCount, state.maxColumnCount).map((v, index) => (new Cell(index, v, cellsContent.get(v))) as ICell);
     },
@@ -56,9 +61,6 @@ export default createStore({
         }
       }
     },
-    // tryCell(state, payload) {
-    //   state.gameContent[payload.cellid].show();
-    // },
   },
   actions: {
     startGame({commit, state}) {
@@ -80,9 +82,10 @@ export default createStore({
           commit('deleteCell', { cellId: payload.cellId });
           if (state.gameContent.cells.every(v => v.isDeleted)) {
             clearInterval(state.timerGameId);
-            commit('gameFinish');
+            commit('saveResult', state.gameTime);
             commit('timerStop');
-            //window.localStorage.setItem(STORAGE_KEY, JSON.stringify())
+            commit('gameFinish');
+            window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state.gameContent.results))
           }
         }
         state.activeCellId = -1;
