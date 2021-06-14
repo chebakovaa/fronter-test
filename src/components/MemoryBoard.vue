@@ -40,7 +40,6 @@ import ICell from "@/model/ICell";
 export default class MemoryBoard extends Vue {
     
     public get items(): ICell[] {
-      console.log("items");
       return store.getters.GAME_CONTENT;
     }
 
