@@ -1,11 +1,14 @@
 <template>
-   <div :style="cssVars" >
+   <div class="task1-hub-board" :style="cssVars" >
      <MemoryCell v-for="cell in items" :key="cell.id" :value="cell"/>
    </div> 
 </template>
 
 <style scoped>
-    .task1-panel-board {
+    .task1-hub-board {
+        background-color: transparent;
+        width: 100%;
+        order: 2;
         width: 100%;
         height: 100%;
         display: grid;
@@ -37,6 +40,7 @@ import ICell from "@/model/ICell";
 export default class MemoryBoard extends Vue {
     
     public get items(): ICell[] {
+      console.log("items");
       return store.getters.GAME_CONTENT;
     }
 

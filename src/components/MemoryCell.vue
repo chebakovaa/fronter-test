@@ -31,7 +31,7 @@ export default class MemoryCell extends Vue {
 <style scoped>
 
 .memory-cell {
-  background-color:aqua;
+  background-color:rgb(95, 117, 218);
 }
 
 .memory-cell_invisible {
