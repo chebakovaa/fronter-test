@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <button @click="start">
+  <div class="task1-hub-cp">
+    <button class="task1-hub-cp_start" @click="start">
       Start
     </button>
-    <h3>{{gameTime}}</h3>
+    <h2 class="task1-hub-cp_time">{{gameTime}}</h2>
   </div>
 </template>
 
@@ -24,7 +24,28 @@ export default class MemoryDashboard extends Vue {
       clearInterval(this.timerId);
       store.commit("timerStop")
     }
+    store.commit("gameStart");
     this.timerId = setInterval(() => store.commit("timeStep"), 1000);
   }
 }
 </script>
+
+<style scoped>
+.task1-hub-cp {
+    order: 1;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+}
+.task1-hub-cp_start {
+  height: 34px;
+  margin: 10px;
+}
+.task1-hub-cp_time {
+  font-size: 4em;
+  text-align: center;
+  color: white;
+}
+</style>

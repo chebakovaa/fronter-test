@@ -1,7 +1,7 @@
 <template>
-    <div class="task1-panel">
-        <MemoryDashboard class="task1-panel-time"/>
-        <MemoryBoard class="task1-panel-board"/>
+    <div class="task1-hub">
+        <MemoryDashboard/>
+        <MemoryBoard/>
     </div>
 </template>
 
@@ -25,12 +25,14 @@ export default class MemoryHub extends Vue {}
 
 body {margin: 0;}
 
-.task1-panel {
+.task1-hub {
     display: inline-flex;
     flex-flow: row nowrap;
     justify-content: flex-start;
     align-items: stretch;
-    background-color: blanchedalmond;
+    background-image: url("../assets/grass-surface.jpg");
+    background-repeat: repeat;
+    background-color: transparent;
     position: absolute;
     bottom: 10px;
     top: 70px;
@@ -38,15 +40,5 @@ body {margin: 0;}
     left: 10px;
 }
 
-.task1-panel-time {
-    order: 1;
-    width: 300px;
-}
-
-.task1-panel-board {
-    order: 2;
-    background-color: cadetblue;
-    width: 100%;
-}
 
 </style>
