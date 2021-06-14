@@ -2,13 +2,12 @@ import { createRandomDoubleArray, createRandomIntArray, makeIdContentArray, make
 import ICell from "@/model/ICell";
 import Cell from "@/model/Cell";
 import { createStore } from "vuex";
-import { Vue } from "vue-class-component";
 
 const cellsContent: Map<number, string> = makeContent(8);
 
 export default createStore({
   state: {
-    columnCount: 6,
+    columnCount: 2,
     maxColumnCount: 8,
     gameTime: 0,
     activeCellId: -1,
@@ -76,7 +75,7 @@ export default createStore({
       commit('activateCell', { cellId: payload.cellId });
       state.timerId5 = setTimeout(() => {
         commit('activateCell', { cellId: -1 });
-      }, 5000);
+      }, 50000);
     }
   },
   modules: {},
