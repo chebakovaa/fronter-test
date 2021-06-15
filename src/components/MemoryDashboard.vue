@@ -1,9 +1,9 @@
 <template>
-  <div class="task1-hub-cp">
-    <button class="task1-hub-cp_start" @click="start">
+  <div class="control-panel">
+    <button class="control-panel__start" @click="start">
       Start
     </button>
-    <h2 class="task1-hub-cp_time">{{gameTime}}</h2>
+    <h2 class="control-panel__time">{{gameTime}}</h2>
     <MemoryResults/>
   </div>
 </template>
@@ -33,7 +33,7 @@ export default class MemoryDashboard extends Vue {
 </script>
 
 <style scoped>
-.task1-hub-cp {
+.control-panel {
     order: 1;
     width: 300px;
     display: flex;
@@ -41,11 +41,11 @@ export default class MemoryDashboard extends Vue {
     justify-content: space-around;
     align-items: stretch;
 }
-.task1-hub-cp_start {
+.control-panel__start {
   height: 34px;
   margin: 10px;
 }
-.task1-hub-cp_time {
+.control-panel__time {
   font-size: 4em;
   text-align: center;
   color: white;

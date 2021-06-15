@@ -1,6 +1,6 @@
 <template>
-  <div class="task1-hub-board-cell"  :class="{'task1-hub-board-cell_invisible': value.isDeleted}" @click="tryCell" >
-    <div class="task1-hub-board-cell_image" v-if="value.isVisible" :style="[ value.content ? {'background': 'url('+getImgUrl(value.content)+') center no-repeat', 'background-color':'white'}:{'background':'#FFF'}]">
+  <div class="memory-cell"  :class="{'memory-cell_invisible': value.isDeleted}" @click="tryCell" >
+    <div class="memory-cell__image" v-if="value.isVisible" :style="[ value.content ? {'background': 'url('+getImgUrl(value.content)+') center no-repeat', 'background-color':'white'}:{'background':'#FFF'}]">
     </div>
   </div>
 </template>
@@ -34,15 +34,15 @@ export default class MemoryCell extends Vue {
 
 <style scoped>
 
-.task1-hub-board-cell {
+.memory-cell {
   background-color:rgb(95, 117, 218);
 }
 
-.task1-hub-board-cell_invisible {
+.memory-cell_invisible {
   background-color:transparent;
 }
 
-.task1-hub-board-cell_image {
+.memory-cell__image {
   width: 100%;
   height: 100%;
 }

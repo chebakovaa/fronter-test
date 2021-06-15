@@ -1,5 +1,5 @@
 <template>
-    <div class="task1">
+    <div class="memory-body">
       <MemoryHub/>
     </div>
 </template>
