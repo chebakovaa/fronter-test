@@ -44,7 +44,7 @@ export default class MemoryBoard extends Vue {
     }
 
     public get columnCount(): number {
-      return store.state.columnCount;
+      return store.getters.COLUMN_COUNT;
     }
 
 }
