@@ -1,5 +1,5 @@
 export function createRandomIntArray(count: number, maxCount: number): number[] {
-  return [...Array(maxCount).keys()].sort((a, b) => Math.random() - 0.5).slice(0, count);   // .map(v => (Math.random() >= 0.5 ? 1: -1)*v).filter(v => v >= 0).slice(count);
+  return [...Array(maxCount).keys()].sort((a, b) => Math.random() - 0.5).slice(0, count);
 }
 
 export function createRandomDoubleArray(source: number[]): number[] {
@@ -11,5 +11,5 @@ export function makeIdContentArray(count: number, maxCount: number): number[] {
 }
 
 export function makeContent(maxCount: number): Map<number, string> {
-  return new Map<number, string>([...Array(maxCount * maxCount).keys()].map(v => [v, v.toString()])); //`../assets/cells/${v.toString()}.svg`
+  return new Map<number, string>([...Array(maxCount * maxCount).keys()].map(v => [v, v.toString()]));
 }

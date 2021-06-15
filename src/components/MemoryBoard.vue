@@ -1,11 +1,11 @@
 <template>
-   <div class="task1-hub-board" :style="cssVars" >
+   <div class="game-board" :style="cssVars" >
      <MemoryCell v-for="cell in items" :key="cell.id" :value="cell"/>
    </div> 
 </template>
 
 <style scoped>
-    .task1-hub-board {
+    .game-board {
         background-color: transparent;
         width: 100%;
         order: 2;

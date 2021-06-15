@@ -1,5 +1,5 @@
 <template>
-    <div class="task1-hub">
+    <div class="memory-hub">
         <MemoryDashboard/>
         <MemoryBoard/>
     </div>
@@ -14,7 +14,7 @@ import MemoryDashboard from "@/components/MemoryDashboard.vue"
 @Options({
   components: {
     MemoryDashboard,
-      MemoryBoard,
+    MemoryBoard,
   },
 })
 export default class MemoryHub extends Vue {}
@@ -25,7 +25,7 @@ export default class MemoryHub extends Vue {}
 
 body {margin: 0;}
 
-.task1-hub {
+.memory-hub {
     display: inline-flex;
     flex-flow: row nowrap;
     justify-content: flex-start;

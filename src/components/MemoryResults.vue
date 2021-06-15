@@ -1,5 +1,5 @@
 <template>
-  <table class="task1-hub-cp_result">
+  <table class="control-panel__result">
     <thead>
       <tr>
         <th v-for="(header, index) in headers" :key="index">{{header}}</th>

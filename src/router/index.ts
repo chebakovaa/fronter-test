@@ -4,7 +4,7 @@ import Memory from "../views/Memory.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "Task1",
+    name: "Memory",
     component: Memory,
   },
   {
