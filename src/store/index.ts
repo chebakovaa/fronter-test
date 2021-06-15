@@ -1,11 +1,15 @@
-import { createRandomDoubleArray, createRandomIntArray, makeIdContentArray, makeContent } from "@/helper/CreateCellContent";
-import ICell from "@/model/ICell";
-import Cell from "@/model/Cell";
 import { createStore } from "vuex";
+import { moduleMemory } from "./moduleMemory";
+import { moduleAdvert } from "./moduleAdvert";
 
-const cellsContent: Map<number, string> = makeContent(8);
-const STORAGE_KEY = 'memory-game';
+export default createStore({
+  modules: {
+    memory: moduleMemory,
+    apart: moduleAdvert
+  }
+})
 
+/*
 export default createStore({
   state: {
     columnCount: 2, // Количество строк и столбцов на поле во время игры (columnCount*columnCount должно быть четным)
@@ -101,3 +105,4 @@ export default createStore({
   },
   modules: {},
 });
+*/
