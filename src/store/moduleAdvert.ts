@@ -1,22 +1,22 @@
-import Apartment from "@/model/Apartment";
-import IApartment from "@/model/IApartment";
+import { IOffer } from "@/model/IOffer";
 
 type ActionAttribute = {commit: any; state: any};
 
 export const moduleAdvert: any = {
     state: {
-      adverts: { apartments: new Array<IApartment>(0)}, // игровые ячейки
+      advert: { offers: new Array<IOffer>(0) }, // игровые ячейки
     },
     getters: {
+      OFFERS: (state: any) => state.advert.offers,
     },
     mutations: {
-      apartments(state: any, items: Array<IApartment>) {
-        state.adverts.apartments = items;
+      offers(state: any, items: IOffer[]) {
+        state.advert.offers = items;
       },
     },
     actions: {
-      apartments({commit, state}: ActionAttribute, payload: any) {
-        commit('apartments', payload.items);
+      offers({ commit, state }: ActionAttribute, payload: any) {
+        commit('offers', payload.data as IOffer[]);
       },
     },
   };
