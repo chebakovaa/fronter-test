@@ -27,6 +27,7 @@ export default class AdsList extends Vue {
   public get rows(): any {
     return store.getters.OFFERS;
   } 
+
 }
 </script>
 

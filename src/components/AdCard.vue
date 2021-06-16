@@ -12,7 +12,8 @@
     </div>
     <div class="ad-card__tools">
       <div class="ad-card__like"  @click="likeClick">
-        <img  src="../assets/pre-like.svg" />
+        <img v-if="isLiked"  src="../assets/post-like.svg" />
+        <img v-else  src="../assets/pre-like.svg" />
       </div>
     </div>
   </div>
@@ -81,8 +82,12 @@ import store from "@/store";
 
 export default class AdCard extends Vue {
 
+  public get isLiked(): boolean {
+    return store.getters.LIKES.has(this.offer.id) ? store.getters.LIKES.get(this.offer.id): false;
+  } 
+
   public get title(): string {
-    return `No.${this.offer?.id}          ${this.offer?.attributes.title} `;
+    return `No.${this.offer?.id}        ${this.offer?.attributes.title} `;
   }
 
   public get description(): string[] {
