@@ -15,6 +15,12 @@ npm run serve
 npm run build
 ```
 
+## Previewing Locally
+```
+npm install -g serve
+serve -s dist
+```
+
 ### Run your unit tests
 ```
 npm run test:unit
