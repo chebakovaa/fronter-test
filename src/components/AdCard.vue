@@ -33,7 +33,6 @@
 }
 .ad-card__title {
   font-size: 2em;
-  white-space:pre;
   padding-bottom: 1.5vh;
 }
 
@@ -87,7 +86,7 @@ export default class AdCard extends Vue {
   } 
 
   public get title(): string {
-    return `No.${this.offer?.id}        ${this.offer?.attributes.title} `;
+    return `${this.offer?.attributes.title}`;
   }
 
   public get description(): string[] {
