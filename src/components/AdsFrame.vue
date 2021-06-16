@@ -1,14 +1,17 @@
 <template>
     <div class="ads-frame">
+      <AdsList/>
     </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import store from '@/store';
+import AdsList from '@/components/AdsList.vue';
 
 @Options({
   components: {
+    AdsList,
   },
 })
 export default class AdsFrame extends Vue {
@@ -25,7 +28,7 @@ export default class AdsFrame extends Vue {
       return response.json();
     })
     .then(function(myJson) {
-      store.dispatch('apartments', { data: myJson });
+      store.dispatch('offers', { data: (myJson as any).response });
     });
   }
 
