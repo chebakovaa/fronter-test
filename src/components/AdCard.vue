@@ -38,7 +38,7 @@
 }
 
 .ad-card__tools {
-  height: 0.5em;
+  height: 1.5em;
   width: 100%;
   padding-top: 1.5vh;
 }
