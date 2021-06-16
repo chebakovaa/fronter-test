@@ -2,7 +2,7 @@ export interface IOffer {
   type: string,
   id: number,
   attributes: IApartment,
-  relationships: IRelationship
+  relationships: IRelationship,
 }
 
 export interface IPersonalInfo {
