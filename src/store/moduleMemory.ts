@@ -9,7 +9,7 @@ type ActionAttribute = {commit: any; state: any};
 
 export const moduleMemory: any = {
     state: {
-      columnCount: 2, // Количество строк и столбцов на поле во время игры (columnCount*columnCount должно быть четным)
+      columnCount: 6, // Количество строк и столбцов на поле во время игры (columnCount*columnCount должно быть четным)
       maxColumnCount: 8, // Максимально допустимое количество строк и столбцов на поле во время игры
       gameTime: 0,
       activeCellId: -1, // Id ячейки, к которой подбирается пара

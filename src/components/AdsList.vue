@@ -43,7 +43,7 @@ export default class AdsList extends Vue {
   }
 
   .ads__list-item {
-    padding-bottom: 2vw;
+    padding-bottom: 1vw;
   }
 
 </style>
