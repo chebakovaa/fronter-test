@@ -35,6 +35,7 @@ export default class AdsList extends Vue {
   .ads {
     width: 100%;
     padding: 2vw;
+    overflow-y: scroll;
   }
   .ads__list {
     list-style-type: none;
